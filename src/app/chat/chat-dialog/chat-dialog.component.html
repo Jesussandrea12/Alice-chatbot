@@ -1,0 +1,19 @@
+<div class="body">
+  <h1>Alice, The Bot</h1>
+  <ng-container *ngFor="let message of messages | async">
+
+    <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+      'to':   message.sentBy === 'user' }">
+      {{ message.content }}
+    </div>
+  
+  </ng-container>
+</div>
+
+
+<div class="fixed">
+  <div class="box">
+    <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" placeholder="Your Message">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
